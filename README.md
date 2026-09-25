@@ -1,54 +1,58 @@
-# theimpostor-web
+# The Impostor Web
 
-This template should help get you started developing with Vue 3 in Vite.
+Marketing and SEO website for **The Impostor** (El Impostor) — a thrilling social deduction spy party game.
+Crafted by [Axis Labs](https://axislabs.eu/).
 
-## Recommended IDE Setup
+- **Live URL**: https://theimpostor.app/
+- **Repo**: https://github.com/the-impostor-app/theimpostor-web
+- **Design Inspiration**: [RevenueCat](https://www.revenuecat.com/) (modern, high-contrast, clean SaaS materiality)
+- **App Source Repo**: `/Users/dani/Desktop/repos/imposter`
 
-[VS Code](https://code.visualstudio.com/) + [Vue (Official)](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (and disable Vetur).
+---
 
-## Recommended Browser Setup
+## Store Links
 
-- Chromium-based browsers (Chrome, Edge, Brave, etc.):
-  - [Vue.js devtools](https://chromewebstore.google.com/detail/vuejs-devtools/nhdogjmejiglipccpnnnanhbledajbpd)
-  - [Turn on Custom Object Formatter in Chrome DevTools](http://bit.ly/object-formatters)
-- Firefox:
-  - [Vue.js devtools](https://addons.mozilla.org/en-US/firefox/addon/vue-js-devtools/)
-  - [Turn on Custom Object Formatter in Firefox DevTools](https://fxdx.dev/firefox-devtools-custom-object-formatters/)
+- **Apple App Store**: https://apps.apple.com/us/app/the-impostor-spy-party-game/id6763661603
+- **Google Play**: https://play.google.com/store/apps/details?id=com.drodriguez.imposter
 
-## Type Support for `.vue` Imports in TS
+---
 
-TypeScript cannot handle type information for `.vue` imports by default, so we replace the `tsc` CLI with `vue-tsc` for type checking. In editors, we need [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) to make the TypeScript language service aware of `.vue` types.
+## Tech Stack
 
-## Customize configuration
+- **Framework**: Vue 3 (Composition API, `<script setup>`)
+- **Routing**: `vue-router` with dedicated SEO routes (`/`, `/how-to-play/`, `/game-modes/`, `/word-packs/`, `/download/`, `/privacy/`, `/terms/`)
+- **Build Tool**: Vite
+- **Styles**: SCSS + centralized design tokens in `src/styles/theme.scss`
+- **Fonts**: Self-hosted `Cabinet Grotesk 800` (headings) and `Satoshi 400/500/700` (body)
+- **Testing**: Vitest (`npm test`)
+- **Linting & Formatting**: Oxlint, ESLint, Prettier
+- **CI/CD**: GitHub Actions deployment to GitHub Pages (`.github/workflows/deploy.yml`)
 
-See [Vite Configuration Reference](https://vite.dev/config/).
+---
 
-## Project Setup
+## Development
 
 ```sh
-npm install
-```
+# Install dependencies
+npm ci
 
-### Compile and Hot-Reload for Development
-
-```sh
+# Start local dev server
 npm run dev
-```
 
-### Type-Check, Compile and Minify for Production
+# Code formatting
+npm run format         # format code with Prettier
+npm run format:check   # verify formatting (CI gate)
 
-```sh
-npm run build
-```
+# Linting
+npm run lint           # fix autofixable issues
+npm run lint:check     # verify linting (CI gate)
 
-### Run Unit Tests with [Vitest](https://vitest.dev/)
+# Type checking
+npm run type-check     # vue-tsc build verification
 
-```sh
-npm run test:unit
-```
+# Tests
+npm test               # run all unit tests once (CI gate)
 
-### Lint with [ESLint](https://eslint.org/)
-
-```sh
-npm run lint
+# Production build
+npm run build          # type-check and vite production bundle
 ```
