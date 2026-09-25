@@ -1,9 +1,13 @@
 # The Impostor Web
 
 Marketing and SEO website for **The Impostor** (El Impostor) — a thrilling social deduction spy party game.
+Crafted by [Axis Labs](https://axislabs.eu/).
 (Source app repo: `/Users/dani/Desktop/repos/imposter` — read its `AGENTS.md` for full mobile app architecture and context).
 
 - **Live URL**: https://theimpostor.app/
+- **Repo**: `git@github.com:the-impostor-app/theimpostor-web.git`
+- **Credits**: [Axis Labs](https://axislabs.eu/)
+- **Design Inspiration**: [RevenueCat](https://www.revenuecat.com/) — modern, clean, high-contrast SaaS materiality with subtle ambient glow effects.
 - **Stack**: Vue 3 (Composition API) + vue-router + Vite + TypeScript + Sass (SCSS) + Vitest + Oxlint + ESLint + Prettier
 - **Design System source of truth**: `src/styles/theme.scss` (architected following `/Users/dani/Desktop/repos/home-handy/lib/core/theme/app_theme.dart` and the app colors in `/Users/dani/Desktop/repos/imposter/lib/constants/app_colors.dart`).
 
@@ -27,11 +31,14 @@ Defined once in `src/config.ts` (`STORE_URLS`). Never hardcode store links in co
    - Display: **Cabinet Grotesk 800** (punchy, high-character party headline font).
    - Body: **Satoshi** (400, 500, 700).
    - Self-hosted as `.woff2` in `src/assets/fonts/` for instant render and zero external CDN latency.
-3. **SEO & Routing**:
+3. **Store Badges Pattern**:
+   - Display both the Apple App Store badge and Google Play badge (`class="store-img"`) side-by-side.
+   - Maintained in `DownloadButtons.vue`.
+4. **SEO & Routing**:
    - Navigation links in the header point to dedicated, crawlable pages instead of single-page anchors.
    - Per-route SEO meta (title, description, canonical link, Open Graph, Twitter card) updated dynamically via `router.afterEach`.
    - CI stages real HTML files for each route (`dist/<route>/index.html`) plus `404.html` fallback for GitHub Pages compatibility.
-4. **CI/CD Quality Gates**:
+5. **CI/CD Quality Gates**:
    - `.github/workflows/deploy.yml` triggers on push to `main`/`master`.
    - Strict gate order: `npm ci` → `npm run format:check` (Prettier) → `npm run lint:check` (Oxlint + ESLint) → `npm run type-check` (vue-tsc) → `npm test` (Vitest) → `npm run build-only` (Vite) → deploy to GitHub Pages.
 
@@ -59,11 +66,11 @@ theimpostor-web/
 │   │   └── store-*.avif      # App Store & Google Play badges
 │   ├── components/
 │   │   ├── SiteHeader.vue    # Sticky header with brand logo & SEO page links
-│   │   ├── SiteFooter.vue    # Footer with all page links, store links & copyright
-│   │   ├── DownloadButtons.vue # Auto-detects iOS vs Android for 1-click install
+│   │   ├── SiteFooter.vue    # Footer with all page links, store links & Axis Labs credits
+│   │   ├── DownloadButtons.vue # Unified store badge images side-by-side
 │   │   └── FeatureCard.vue   # Reusable styled card with chip, title & description
 │   ├── pages/
-│   │   ├── HomePage.vue      # / — Hero, 3-step quick rules, core features showcase & CTA
+│   │   ├── HomePage.vue      # / — Hero, metrics bar, 3-step rules, RevenueCat feature cards & CTA
 │   │   ├── HowToPlayPage.vue # /how-to-play — In-depth rulebook, clue phases & bluffing strategies
 │   │   ├── GameModesPage.vue # /game-modes — Pass & Play (1 phone) vs Online Multiplayer rooms
 │   │   ├── WordPacksPage.vue # /word-packs — Curated categories, 6 languages, custom packs
@@ -76,8 +83,8 @@ theimpostor-web/
 │   │   └── theme.scss        # THEME SOURCE OF TRUTH: design tokens, font faces & resets
 │   ├── __tests__/
 │   │   ├── App.spec.ts       # App shell, routing & navigation link tests
-│   │   └── config.spec.ts    # Store links & platform detection tests
-│   ├── config.ts             # App constants, metadata & detectPlatform()
+│   │   └── config.spec.ts    # Store links, Axis Labs credits & platform detection tests
+│   ├── config.ts             # App constants, Axis Labs credits, metadata
 │   ├── main.ts               # App entrypoint, imports theme.scss globally
 │   └── App.vue               # App shell (Header + RouterView + Footer)
 ├── index.html                # HTML entrypoint with metadata and icons
@@ -92,11 +99,11 @@ theimpostor-web/
 
 | Token Category | Examples / Values |
 | --- | --- |
-| **Colors** | `--color-primary: #FFAE00` (The Impostor signature orange)<br>`--color-primary-light: #FFBE33`<br>`--color-primary-dark: #E69D00`<br>`--color-secondary: #2196F3` (App blue)<br>`--color-tertiary: #673AB7` (App purple)<br>`--color-danger: #E53935` (Impostor red)<br>`--color-success: #4CAF50` (Detective green)<br>`--color-ink: #2B2118` (deep warm ink)<br>`--color-muted: #827267`<br>`--color-background-top: #FAF8F5`<br>`--color-background-bottom: #F4EFE6`<br>`--color-surface: #FFFFFF` |
+| **Colors** | `--color-primary: #FFAE00` (The Impostor signature orange)<br>`--color-primary-light: #FFBE33`<br>`--color-primary-dark: #E69D00`<br>`--color-secondary: #0284C7` (RevenueCat electric blue)<br>`--color-tertiary: #6366F1` (Indigo accent)<br>`--color-danger: #EF4444` (Impostor red)<br>`--color-success: #10B981` (Detective emerald)<br>`--color-ink: #0B0F19` (modern deep slate)<br>`--color-muted: #64748B`<br>`--color-background-top: #F8F9FB`<br>`--color-background-bottom: #F1F3F7`<br>`--color-surface: #FFFFFF` |
 | **Fonts** | `--font-display: 'Cabinet Grotesk', 'Satoshi', sans-serif`<br>`--font-body: 'Satoshi', sans-serif` |
-| **Radii** | `--radius-card: 24px`<br>`--radius-button: 16px`<br>`--radius-lg: 16px`<br>`--radius-md: 12px`<br>`--radius-pill: 999px` |
+| **Radii** | `--radius-card: 20px`<br>`--radius-button: 999px`<br>`--radius-lg: 16px`<br>`--radius-md: 12px`<br>`--radius-pill: 999px` |
 | **Spacing** | `--space-2xs: 4px`, `--space-xs: 8px`, `--space-sm: 12px`, `--space-md: 16px`, `--space-lg: 24px`, `--space-xl: 32px`, `--space-2xl: 48px`, `--space-3xl: 64px`, `--space-4xl: 96px` |
-| **Motion** | `--motion-quick: 150ms`, `--motion-medium: 220ms`, `--motion-slow: 300ms`, `--motion-curve: cubic-bezier(0.4, 0, 0.2, 1)` |
+| **Motion** | `--motion-quick: 150ms`, `--motion-medium: 220ms`, `--motion-slow: 300ms`, `--motion-curve: cubic-bezier(0.16, 1, 0.3, 1)` |
 
 ---
 
@@ -104,7 +111,7 @@ theimpostor-web/
 
 | Route | Component | SEO Purpose & Key Content |
 | --- | --- | --- |
-| `/` | `HomePage.vue` | Hero, quick 3-step rules, core feature highlights, store download buttons |
+| `/` | `HomePage.vue` | Hero with metrics bar, quick 3-step rules, RevenueCat-style feature cards, store badges |
 | `/how-to-play` | `HowToPlayPage.vue` | Complete official rules, clue giving phase, accusation & voting, detective and impostor strategy tips |
 | `/game-modes` | `GameModesPage.vue` | Pass & Play (single device offline) vs Online Multiplayer rooms, timers, and custom rules |
 | `/word-packs` | `WordPacksPage.vue` | 1,000+ words across Food, Travel, Everyday Life, Cinema, Animals, 6 languages, custom editor |
