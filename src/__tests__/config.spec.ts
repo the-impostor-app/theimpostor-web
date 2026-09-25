@@ -21,7 +21,7 @@ describe('config', () => {
 
   it('has the app name and site url', () => {
     expect(APP_NAME).toBe('The Impostor')
-    expect(SITE_URL).toBe('https://theimpostor.app')
+    expect(SITE_URL).toBe('https://theimpostor.eu')
   })
 
   it('has the Axis Labs credits url and name', () => {

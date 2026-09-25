@@ -3,7 +3,7 @@ export const APP_TAGLINE = 'The Ultimate Spy Party Game'
 export const APP_DESCRIPTION =
   'Unmask the impostor among your friends! Pass & play on 1 phone or play online multiplayer. Hundreds of secret words, custom categories, and endless bluffing fun.'
 
-export const SITE_URL = 'https://theimpostor.app'
+export const SITE_URL = 'https://theimpostor.eu'
 export const CREDITS_URL = 'https://axislabs.eu/'
 export const CREDITS_NAME = 'Axis Labs'
 

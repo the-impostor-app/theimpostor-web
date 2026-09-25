@@ -5,8 +5,8 @@ Crafted by [Axis Labs](https://axislabs.eu/).
 (Source app repo: `/Users/dani/Desktop/repos/imposter` — read its `AGENTS.md` for full mobile app architecture and context).
 
 - **Live URLs**:
-  - Primary Domain: https://theimpostor.app/
-  - European Domain: https://theimpostor.eu/
+  - Primary Domain (GitHub Pages CNAME): https://theimpostor.eu/
+  - Global Domain: https://theimpostor.app/
 - **Repo**: `git@github.com:the-impostor-app/theimpostor-web.git`
 - **Credits**: [Axis Labs](https://axislabs.eu/)
 - **Design Inspiration**: [RevenueCat](https://www.revenuecat.com/) — modern, clean, high-contrast SaaS materiality with subtle ambient glow effects.

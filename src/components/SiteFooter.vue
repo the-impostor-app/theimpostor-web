@@ -115,12 +115,12 @@ const currentYear = new Date().getFullYear()
                 </a>
               </li>
               <li>
-                <RouterLink to="/privacy" class="site-footer__link">{{
+                <RouterLink to="/privacy" rel="privacy-policy" class="site-footer__link">{{
                   t('footer.privacy')
                 }}</RouterLink>
               </li>
               <li>
-                <RouterLink to="/terms" class="site-footer__link">{{
+                <RouterLink to="/terms" rel="terms-of-service" class="site-footer__link">{{
                   t('footer.terms')
                 }}</RouterLink>
               </li>
@@ -128,7 +128,7 @@ const currentYear = new Date().getFullYear()
                 <a
                   href="https://axislabs.eu/the-impostor/policy"
                   target="_blank"
-                  rel="noopener noreferrer"
+                  rel="noopener noreferrer privacy-policy"
                   class="site-footer__link"
                 >
                   Axis Labs Policy ↗
@@ -138,7 +138,7 @@ const currentYear = new Date().getFullYear()
                 <a
                   href="https://axislabs.eu/the-impostor/terms-and-conditions"
                   target="_blank"
-                  rel="noopener noreferrer"
+                  rel="noopener noreferrer terms-of-service"
                   class="site-footer__link"
                 >
                   Axis Labs Terms ↗

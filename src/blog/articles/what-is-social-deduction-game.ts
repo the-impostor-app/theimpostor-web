@@ -28,7 +28,7 @@ export const article: BlogArticle = {
 </ul>
 
 <h3>The Impostor: The Modern Social Deduction Game</h3>
-<p>While classic games require a dedicated moderator, lots of cards, and complex rules, <a href="https://theimpostor.app">The Impostor</a> simplifies the setup. With a single phone in Pass & Play mode, or online multiplayer rooms, you get all the thrill of uncovering the spy without the hassle.</p>
+<p>While classic games require a dedicated moderator, lots of cards, and complex rules, <a href="https://theimpostor.eu">The Impostor</a> simplifies the setup. With a single phone in Pass & Play mode, or online multiplayer rooms, you get all the thrill of uncovering the spy without the hassle.</p>
 
 <h2>FAQ</h2>
 <div class="faq-item">

@@ -449,11 +449,11 @@ const recentArticles = computed(() => {
                 ? 'El Impostor respeta tu privacidad: el modo local no recopila datos personales.'
                 : 'The Impostor respects player privacy: local mode collects zero personal data.'
             }}
-            <RouterLink to="/privacy" class="legal-link">
+            <RouterLink to="/privacy" rel="privacy-policy" class="legal-link">
               {{ locale === 'es' ? 'Política de Privacidad' : 'Privacy Policy' }}
             </RouterLink>
             •
-            <RouterLink to="/terms" class="legal-link">
+            <RouterLink to="/terms" rel="terms-of-service" class="legal-link">
               {{ locale === 'es' ? 'Términos de Servicio' : 'Terms of Service' }}
             </RouterLink>
           </p>

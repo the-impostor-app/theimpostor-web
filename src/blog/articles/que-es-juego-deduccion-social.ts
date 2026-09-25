@@ -28,7 +28,7 @@ export const article: BlogArticle = {
 </ul>
 
 <h3>The Impostor: El juego de deducción social moderno</h3>
-<p>Mientras que los juegos clásicos requieren un moderador, cartas y reglas complejas, <a href="https://theimpostor.app">The Impostor</a> simplifica la preparación. Con un solo teléfono en modo Pasar y Jugar, o en salas multijugador online, obtienes toda la emoción de descubrir al espía sin complicaciones.</p>
+<p>Mientras que los juegos clásicos requieren un moderador, cartas y reglas complejas, <a href="https://theimpostor.eu">The Impostor</a> simplifica la preparación. Con un solo teléfono en modo Pasar y Jugar, o en salas multijugador online, obtienes toda la emoción de descubrir al espía sin complicaciones.</p>
 
 <h2>Preguntas Frecuentes (FAQ)</h2>
 <div class="faq-item">
