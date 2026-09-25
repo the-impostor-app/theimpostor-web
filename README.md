@@ -3,7 +3,7 @@
 Marketing and SEO website for **The Impostor** (El Impostor) — a thrilling social deduction spy party game.
 Crafted by [Axis Labs](https://axislabs.eu/).
 
-- **Live URL**: https://theimpostor.app/
+- **Live URL**: https://theimpostor.eu/ (GitHub Pages primary domain; also https://theimpostor.app/)
 - **Repo**: https://github.com/the-impostor-app/theimpostor-web
 - **Design Inspiration**: [RevenueCat](https://www.revenuecat.com/) (modern, high-contrast, clean SaaS materiality)
 - **App Source Repo**: `/Users/dani/Desktop/repos/imposter`

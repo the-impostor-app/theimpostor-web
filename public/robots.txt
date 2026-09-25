@@ -24,4 +24,4 @@ Allow: /
 User-agent: anthropic-ai
 Allow: /
 
-Sitemap: https://theimpostor.app/sitemap.xml
+Sitemap: https://theimpostor.eu/sitemap.xml

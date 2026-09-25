@@ -20,23 +20,23 @@ The Impostor (El Impostor) is a mobile party and social deduction game where one
 - Android: https://play.google.com/store/apps/details?id=com.drodriguez.imposter
 
 ## Official URLs
-- Website: https://theimpostor.app/ (also https://theimpostor.eu/)
-- How to Play: https://theimpostor.app/how-to-play/
-- Game Modes: https://theimpostor.app/game-modes/
-- Word Packs: https://theimpostor.app/word-packs/
-- Blog Hub: https://theimpostor.app/blog/
-- Download: https://theimpostor.app/download/
-- Privacy Policy: https://theimpostor.app/privacy/ (Axis Labs: https://axislabs.eu/the-impostor/policy)
-- Terms of Service: https://theimpostor.app/terms/ (Axis Labs: https://axislabs.eu/the-impostor/terms-and-conditions)
+- Website: https://theimpostor.eu/
+- How to Play: https://theimpostor.eu/how-to-play/
+- Game Modes: https://theimpostor.eu/game-modes/
+- Word Packs: https://theimpostor.eu/word-packs/
+- Blog Hub: https://theimpostor.eu/blog/
+- Download: https://theimpostor.eu/download/
+- Privacy Policy: https://theimpostor.eu/privacy/ (Axis Labs: https://axislabs.eu/the-impostor/policy)
+- Terms of Service: https://theimpostor.eu/terms/ (Axis Labs: https://axislabs.eu/the-impostor/terms-and-conditions)
 
 ## Strategy & Blog Articles
-- What Is a Social Deduction Game? The Complete 2026 Guide: https://theimpostor.app/blog/what-is-social-deduction-game
-- ¿Qué es un juego de deducción social? Guía completa 2026: https://theimpostor.app/blog/que-es-juego-deduccion-social
-- 10 Best Party Games for Large Groups in 2026: https://theimpostor.app/blog/best-party-games-large-groups
-- Los 10 mejores juegos de fiesta para grupos grandes en 2026: https://theimpostor.app/blog/mejores-juegos-fiesta-grupos-grandes
-- The Impostor vs Spyfall: Which Spy Game Is Right for Your Group?: https://theimpostor.app/blog/impostor-vs-spyfall
-- The Impostor vs Spyfall: ¿Qué juego de espías es para tu grupo?: https://theimpostor.app/blog/impostor-vs-spyfall-es
-- How to Host the Perfect Game Night: Tips, Schedules & Party Game Ideas: https://theimpostor.app/blog/how-to-host-game-night
-- Cómo organizar la noche de juegos perfecta: Ideas y consejos: https://theimpostor.app/blog/como-organizar-noche-juegos
-- 7 Best Offline Party Games That Need Zero Internet: https://theimpostor.app/blog/best-offline-party-games
-- Los 7 mejores juegos de fiesta sin internet: https://theimpostor.app/blog/mejores-juegos-fiesta-sin-internet
+- What Is a Social Deduction Game? The Complete 2026 Guide: https://theimpostor.eu/blog/what-is-social-deduction-game
+- ¿Qué es un juego de deducción social? Guía completa 2026: https://theimpostor.eu/blog/que-es-juego-deduccion-social
+- 10 Best Party Games for Large Groups in 2026: https://theimpostor.eu/blog/best-party-games-large-groups
+- Los 10 mejores juegos de fiesta para grupos grandes en 2026: https://theimpostor.eu/blog/mejores-juegos-fiesta-grupos-grandes
+- The Impostor vs Spyfall: Which Spy Game Is Right for Your Group?: https://theimpostor.eu/blog/impostor-vs-spyfall
+- The Impostor vs Spyfall: ¿Qué juego de espías es para tu grupo?: https://theimpostor.eu/blog/impostor-vs-spyfall-es
+- How to Host the Perfect Game Night: Tips, Schedules & Party Game Ideas: https://theimpostor.eu/blog/how-to-host-game-night
+- Cómo organizar la noche de juegos perfecta: Ideas y consejos: https://theimpostor.eu/blog/como-organizar-noche-juegos
+- 7 Best Offline Party Games That Need Zero Internet: https://theimpostor.eu/blog/best-offline-party-games
+- Los 7 mejores juegos de fiesta sin internet: https://theimpostor.eu/blog/mejores-juegos-fiesta-sin-internet

@@ -138,6 +138,16 @@ function setMetaTag(selector: string, attrName: string, attrValue: string, conte
   element.setAttribute('content', content)
 }
 
+function getCanonicalBase(): string {
+  if (typeof window !== 'undefined' && window.location && window.location.origin) {
+    const origin = window.location.origin.toLowerCase()
+    if (!origin.includes('localhost') && !origin.includes('127.0.0.1')) {
+      return origin.replace(/\/+$/, '')
+    }
+  }
+  return SITE_URL.replace(/\/+$/, '')
+}
+
 function setCanonicalTag(url: string) {
   if (typeof document === 'undefined') return
   let element = document.querySelector<HTMLLinkElement>('link[rel="canonical"]')
@@ -166,16 +176,18 @@ router.afterEach((to) => {
 
   document.title = title
 
+  const baseOrigin = getCanonicalBase()
+  const cleanPath = to.path.replace(/^\/+|\/+$/g, '')
+  const fullUrl = cleanPath === '' ? `${baseOrigin}/` : `${baseOrigin}/${cleanPath}/`
+
   setMetaTag('meta[name="description"]', 'name', 'description', description)
   setMetaTag('meta[property="og:title"]', 'property', 'og:title', title)
   setMetaTag('meta[property="og:description"]', 'property', 'og:description', description)
-  setMetaTag('meta[property="og:image"]', 'property', 'og:image', `${SITE_URL}/og-image.png`)
+  setMetaTag('meta[property="og:image"]', 'property', 'og:image', `${baseOrigin}/og-image.png`)
   setMetaTag('meta[name="twitter:title"]', 'name', 'twitter:title', title)
   setMetaTag('meta[name="twitter:description"]', 'name', 'twitter:description', description)
-  setMetaTag('meta[name="twitter:image"]', 'name', 'twitter:image', `${SITE_URL}/og-image.png`)
+  setMetaTag('meta[name="twitter:image"]', 'name', 'twitter:image', `${baseOrigin}/og-image.png`)
 
-  const normalizedPath = to.path.startsWith('/') ? to.path.slice(1) : to.path
-  const fullUrl = `${SITE_URL}/${normalizedPath}`
   setCanonicalTag(fullUrl)
   setMetaTag('meta[property="og:url"]', 'property', 'og:url', fullUrl)
 })
