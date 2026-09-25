@@ -19,7 +19,6 @@ import appIcon from '../assets/images/icon.png'
         <div class="download-cards">
           <!-- iOS -->
           <div class="card download-card">
-            <span class="chip chip--info download-card__chip">Apple Devices</span>
             <h2 class="download-card__title">iOS & iPadOS</h2>
             <p class="download-card__desc">
               Requires iOS 12.0 or later. Compatible with iPhone, iPad, and iPod touch.
@@ -38,7 +37,6 @@ import appIcon from '../assets/images/icon.png'
 
           <!-- Android -->
           <div class="card download-card">
-            <span class="chip chip--success download-card__chip">Android Devices</span>
             <h2 class="download-card__title">Google Play</h2>
             <p class="download-card__desc">
               Requires Android 6.0 and up. Optimized for phones and tablets.
@@ -111,11 +109,6 @@ import appIcon from '../assets/images/icon.png'
   display: flex;
   flex-direction: column;
   padding: var(--space-2xl);
-
-  &__chip {
-    align-self: flex-start;
-    margin-bottom: var(--space-md);
-  }
 
   &__title {
     font-size: var(--font-size-h3);

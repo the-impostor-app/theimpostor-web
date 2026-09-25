@@ -1,10 +1,12 @@
 # The Impostor Web
 
-Marketing and SEO website for **The Impostor** (El Impostor) — a thrilling social deduction spy party game.
+Marketing, Content Hub, and SEO website for **The Impostor** (*El Impostor*) — a thrilling social deduction spy party game.
 Crafted by [Axis Labs](https://axislabs.eu/).
 (Source app repo: `/Users/dani/Desktop/repos/imposter` — read its `AGENTS.md` for full mobile app architecture and context).
 
-- **Live URL**: https://theimpostor.app/
+- **Live URLs**:
+  - Primary Domain: https://theimpostor.app/
+  - European Domain: https://theimpostor.eu/
 - **Repo**: `git@github.com:the-impostor-app/theimpostor-web.git`
 - **Credits**: [Axis Labs](https://axislabs.eu/)
 - **Design Inspiration**: [RevenueCat](https://www.revenuecat.com/) — modern, clean, high-contrast SaaS materiality with subtle ambient glow effects.
@@ -22,6 +24,15 @@ Defined once in `src/config.ts` (`STORE_URLS`). Never hardcode store links in co
 
 ---
 
+## Legal & Official Axis Labs Links
+
+- **In-Site Privacy Policy**: `/privacy` (aliases: `/privacy-policy`, `/the-impostor/policy`)
+- **In-Site Terms of Service**: `/terms` (aliases: `/terms-of-service`, `/the-impostor/terms-and-conditions`)
+- **Axis Labs Official Policy**: https://axislabs.eu/the-impostor/policy
+- **Axis Labs Official Terms**: https://axislabs.eu/the-impostor/terms-and-conditions
+
+---
+
 ## Tech Stack & Architecture Decisions
 
 1. **Sass & CSS Custom Properties**:
@@ -34,13 +45,34 @@ Defined once in `src/config.ts` (`STORE_URLS`). Never hardcode store links in co
 3. **Store Badges Pattern**:
    - Display both the Apple App Store badge and Google Play badge (`class="store-img"`) side-by-side.
    - Maintained in `DownloadButtons.vue`.
-4. **SEO & Routing**:
-   - Navigation links in the header point to dedicated, crawlable pages instead of single-page anchors.
-   - Per-route SEO meta (title, description, canonical link, Open Graph, Twitter card) updated dynamically via `router.afterEach`.
-   - CI stages real HTML files for each route (`dist/<route>/index.html`) plus `404.html` fallback for GitHub Pages compatibility.
-5. **CI/CD Quality Gates**:
+4. **Internationalization (i18n)**:
+   - Full support for **English** and **Spanish** (*El Impostor*).
+   - Lightweight, zero-dependency composable architecture (`src/composables/useI18n.ts`).
+   - Translation dictionaries located in `src/i18n/en.ts` and `src/i18n/es.ts`.
+   - Header language switcher (`LanguageSwitch.vue`) with responsive desktop and mobile drawers.
+   - Dynamic `<html lang="...">` update on route and locale change.
+5. **SEO & AEO / GEO Engine**:
+   - **Social Preview Image**: High-res OG preview image (`og-image.png`, 1200×630) configured via `og:image`, `og:image:width`, `og:image:height`, and `twitter:image`.
+   - **Same-Domain Canonical**: Static `<link rel="canonical">` in `index.html` plus dynamic route updates in `router.afterEach`.
+   - **Hreflang Tags**: `en`, `es`, and `x-default` alternates in `index.html` and `sitemap.xml`.
+   - **Structured Data (JSON-LD)**:
+     - `MobileApplication` schema for Google Play / App Store indexing.
+     - `Organization` schema for Axis Labs.
+     - `WebSite` schema.
+     - Dynamic `BlogPosting` schema on each individual blog article.
+     - Self-contained definition and FAQ blocks on the homepage and rules pages for Google AI Overviews and answer engines (Perplexity, ChatGPT).
+   - **Google Consent Mode v2**: Default privacy-first signal configured in `index.html` head (`ad_storage: denied`, `analytics_storage: denied`).
+   - **AI Bot Directives**: `robots.txt` explicitly allows GPTBot, ChatGPT-User, PerplexityBot, ClaudeBot, Google-Extended, anthropic-ai, and Bingbot.
+   - **LLM Search Overview**: `public/llms.txt` provides structured markdown context for LLM crawlers.
+6. **Content Hub & Blog**:
+   - High-intent keyword targeting (e.g., *social deduction game*, *spy party game*, *offline party games*, *juego de deducción social*, *palabras para el impostor*).
+   - 10 comprehensive evergreen articles (5 in English, 5 in Spanish) located in `src/blog/articles/`.
+   - Dedicated `/blog` index with tag filtering and reading time.
+   - Dynamic article route `/blog/:slug` with prose styling and related articles.
+7. **CI/CD Quality Gates & GitHub Pages Compatibility**:
    - `.github/workflows/deploy.yml` triggers on push to `main`/`master`.
-   - Strict gate order: `npm ci` → `npm run format:check` (Prettier) → `npm run lint:check` (Oxlint + ESLint) → `npm run type-check` (vue-tsc) → `npm test` (Vitest) → `npm run build-only` (Vite) → deploy to GitHub Pages.
+   - Gate sequence: `npm ci` → `npm run format:check` (Prettier) → `npm run lint:check` (Oxlint + ESLint) → `npm run type-check` (vue-tsc) → `npm test` (Vitest) → `npm run build-only` (Vite) → GitHub Pages deployment.
+   - Staging trick: Every route and blog article gets an `index.html` copy staged in `dist/` (`dist/blog/`, `dist/blog/:slug/`, `dist/the-impostor/policy/`, etc.) plus `404.html` fallback.
 
 ---
 
@@ -54,40 +86,54 @@ theimpostor-web/
 ├── public/
 │   ├── favicon.ico
 │   ├── icon-512.png
+│   ├── og-image.png          # 1200x630 social preview image
 │   ├── apple-touch-icon.png
 │   ├── manifest.webmanifest  # PWA manifest
 │   ├── robots.txt            # Search and AI bot crawler directives
-│   ├── sitemap.xml           # XML sitemap of all public routes
+│   ├── sitemap.xml           # XML sitemap with 18 URLs and hreflang alternates
 │   └── llms.txt              # Markdown overview for AI agents and LLM search
 ├── src/
 │   ├── assets/
 │   │   ├── fonts/            # cabinet-grotesk-800.woff2, satoshi-400/500/700.woff2
 │   │   ├── images/           # App icon, detective/impostor avatars, branding assets
 │   │   └── store-*.avif      # App Store & Google Play badges
+│   ├── blog/
+│   │   ├── types.ts          # BlogArticle schema interface
+│   │   ├── articles.ts       # Registry exporting all English and Spanish articles
+│   │   └── articles/         # 10 individual articles (5 EN, 5 ES)
 │   ├── components/
-│   │   ├── SiteHeader.vue    # Sticky header with brand logo & SEO page links
-│   │   ├── SiteFooter.vue    # Footer with all page links, store links & Axis Labs credits
+│   │   ├── SiteHeader.vue    # Sticky header with brand logo, SEO page links, blog link & language switch
+│   │   ├── SiteFooter.vue    # Footer with all page links, store links & Axis Labs legal links
+│   │   ├── LanguageSwitch.vue# Bilingual toggle (EN | ES)
 │   │   ├── DownloadButtons.vue # Unified store badge images side-by-side
 │   │   └── FeatureCard.vue   # Reusable styled card with chip, title & description
+│   ├── composables/
+│   │   └── useI18n.ts        # Reactive bilingual i18n composable with localStorage persistence
+│   ├── i18n/
+│   │   ├── en.ts             # English translation dictionary
+│   │   ├── es.ts             # Spanish translation dictionary
+│   │   └── index.ts          # i18n module entrypoint
 │   ├── pages/
-│   │   ├── HomePage.vue      # / — Hero, metrics bar, 3-step rules, RevenueCat feature cards & CTA
+│   │   ├── HomePage.vue      # / — Hero, duel showcase, 3-step rules, features, blog preview, FAQ, legal strip
 │   │   ├── HowToPlayPage.vue # /how-to-play — In-depth rulebook, clue phases & bluffing strategies
 │   │   ├── GameModesPage.vue # /game-modes — Pass & Play (1 phone) vs Online Multiplayer rooms
 │   │   ├── WordPacksPage.vue # /word-packs — Curated categories, 6 languages, custom packs
+│   │   ├── BlogPage.vue      # /blog — Content hub with tag filtering and reading times
+│   │   ├── BlogArticlePage.vue # /blog/:slug — Full article prose with JSON-LD schema & related reads
 │   │   ├── DownloadPage.vue  # /download — Direct App Store & Google Play download hubs
-│   │   ├── PrivacyPage.vue   # /privacy — Offline-first local data & multiplayer privacy
-│   │   └── TermsPage.vue     # /terms — Terms of service & app licensing
+│   │   ├── PrivacyPage.vue   # /privacy — Bilingual offline-first local data & multiplayer privacy
+│   │   └── TermsPage.vue     # /terms — Bilingual terms of service & app licensing
 │   ├── router/
-│   │   └── index.ts          # Route definitions & dynamic document.title/meta handlers
+│   │   └── index.ts          # Route definitions, aliases, and dynamic document.title/meta handlers
 │   ├── styles/
 │   │   └── theme.scss        # THEME SOURCE OF TRUTH: design tokens, font faces & resets
 │   ├── __tests__/
-│   │   ├── App.spec.ts       # App shell, routing & navigation link tests
+│   │   ├── App.spec.ts       # App shell, routing, blog navigation & language switch tests
 │   │   └── config.spec.ts    # Store links, Axis Labs credits & platform detection tests
 │   ├── config.ts             # App constants, Axis Labs credits, metadata
-│   ├── main.ts               # App entrypoint, imports theme.scss globally
-│   └── App.vue               # App shell (Header + RouterView + Footer)
-├── index.html                # HTML entrypoint with metadata and icons
+│   ├── main.ts               # App entrypoint, imports theme.scss globally and installs i18n
+│   └── App.vue               # App shell (Header + RouterView + Footer + dynamic html lang)
+├── index.html                # HTML entrypoint with metadata, Consent Mode v2, and JSON-LD schemas
 ├── package.json              # Scripts & dependencies
 ├── vite.config.ts            # Vite config
 └── tsconfig.json             # TypeScript configuration
@@ -111,13 +157,15 @@ theimpostor-web/
 
 | Route | Component | SEO Purpose & Key Content |
 | --- | --- | --- |
-| `/` | `HomePage.vue` | Hero with metrics bar, quick 3-step rules, RevenueCat-style feature cards, store badges |
+| `/` | `HomePage.vue` | Hero with metrics bar, quick 3-step rules, RevenueCat-style feature cards, blog preview, FAQ, legal strip |
 | `/how-to-play` | `HowToPlayPage.vue` | Complete official rules, clue giving phase, accusation & voting, detective and impostor strategy tips |
 | `/game-modes` | `GameModesPage.vue` | Pass & Play (single device offline) vs Online Multiplayer rooms, timers, and custom rules |
 | `/word-packs` | `WordPacksPage.vue` | 1,000+ words across Food, Travel, Everyday Life, Cinema, Animals, 6 languages, custom editor |
+| `/blog` | `BlogPage.vue` | Content hub with categorized articles in English and Spanish, reading times, and tag filtering |
+| `/blog/:slug` | `BlogArticlePage.vue` | Long-form articles with structured headings, FAQ schema, comparison tables, and download CTAs |
 | `/download` | `DownloadPage.vue` | Store download hubs with device requirements and features |
-| `/privacy` | `PrivacyPage.vue` | Privacy policy: local offline play data retention, Firebase multiplayer session handling |
-| `/terms` | `TermsPage.vue` | Terms of service and usage conditions |
+| `/privacy` | `PrivacyPage.vue` | Bilingual privacy policy: local offline play data retention, Firebase multiplayer session handling |
+| `/terms` | `TermsPage.vue` | Bilingual terms of service and usage conditions |
 
 ---
 

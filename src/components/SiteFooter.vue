@@ -1,8 +1,10 @@
 <script setup lang="ts">
-import { APP_NAME, APP_TAGLINE, CREDITS_URL, CREDITS_NAME } from '../config'
+import { APP_NAME, CREDITS_URL, CREDITS_NAME } from '../config'
 import appIcon from '../assets/images/icon.png'
 import DownloadButtons from './DownloadButtons.vue'
+import { useI18n } from '../composables/useI18n'
 
+const { t, locale } = useI18n()
 const currentYear = new Date().getFullYear()
 </script>
 
@@ -13,15 +15,25 @@ const currentYear = new Date().getFullYear()
         <div class="site-footer__brand-col">
           <RouterLink to="/" class="site-footer__brand">
             <img :src="appIcon" :alt="APP_NAME" class="site-footer__logo" />
-            <span class="site-footer__name">{{ APP_NAME }}</span>
+            <span class="site-footer__name">{{ locale === 'es' ? 'El Impostor' : APP_NAME }}</span>
           </RouterLink>
-          <p class="site-footer__tagline">{{ APP_TAGLINE }}</p>
+          <p class="site-footer__tagline">
+            {{
+              locale === 'es'
+                ? 'El juego definitivo de fiesta y deducción social.'
+                : 'The Ultimate Spy Party Game'
+            }}
+          </p>
           <p class="site-footer__desc">
-            The thrilling social deduction party game. An
+            {{
+              locale === 'es'
+                ? 'El emocionante juego de fiesta de deducción social. Una creación de'
+                : 'The thrilling social deduction party game. An'
+            }}
             <a :href="CREDITS_URL" target="_blank" rel="noopener noreferrer" class="credits-link">
               {{ CREDITS_NAME }}
             </a>
-            creation.
+            {{ locale === 'es' ? '' : 'creation.' }}
           </p>
           <div class="site-footer__stores">
             <DownloadButtons />
@@ -30,26 +42,41 @@ const currentYear = new Date().getFullYear()
 
         <div class="site-footer__nav-group">
           <div class="site-footer__col">
-            <h4 class="site-footer__heading">Game</h4>
+            <h4 class="site-footer__heading">{{ t('footer.game') }}</h4>
             <ul class="site-footer__list">
-              <li><RouterLink to="/" class="site-footer__link">Home</RouterLink></li>
               <li>
-                <RouterLink to="/how-to-play" class="site-footer__link">How to Play</RouterLink>
+                <RouterLink to="/" class="site-footer__link">{{
+                  locale === 'es' ? 'Inicio' : 'Home'
+                }}</RouterLink>
               </li>
               <li>
-                <RouterLink to="/game-modes" class="site-footer__link">Game Modes</RouterLink>
+                <RouterLink to="/how-to-play" class="site-footer__link">{{
+                  t('nav.howToPlay')
+                }}</RouterLink>
               </li>
               <li>
-                <RouterLink to="/word-packs" class="site-footer__link">Word Packs</RouterLink>
+                <RouterLink to="/game-modes" class="site-footer__link">{{
+                  t('nav.gameModes')
+                }}</RouterLink>
+              </li>
+              <li>
+                <RouterLink to="/word-packs" class="site-footer__link">{{
+                  t('nav.wordPacks')
+                }}</RouterLink>
+              </li>
+              <li>
+                <RouterLink to="/blog" class="site-footer__link">{{ t('nav.blog') }}</RouterLink>
               </li>
             </ul>
           </div>
 
           <div class="site-footer__col">
-            <h4 class="site-footer__heading">Downloads</h4>
+            <h4 class="site-footer__heading">{{ locale === 'es' ? 'Descargas' : 'Downloads' }}</h4>
             <ul class="site-footer__list">
               <li>
-                <RouterLink to="/download" class="site-footer__link">Download Hub</RouterLink>
+                <RouterLink to="/download" class="site-footer__link">{{
+                  locale === 'es' ? 'Centro de Descarga' : 'Download Hub'
+                }}</RouterLink>
               </li>
               <li>
                 <a
@@ -75,7 +102,7 @@ const currentYear = new Date().getFullYear()
           </div>
 
           <div class="site-footer__col">
-            <h4 class="site-footer__heading">Company</h4>
+            <h4 class="site-footer__heading">{{ t('footer.company') }}</h4>
             <ul class="site-footer__list">
               <li>
                 <a
@@ -88,10 +115,34 @@ const currentYear = new Date().getFullYear()
                 </a>
               </li>
               <li>
-                <RouterLink to="/privacy" class="site-footer__link">Privacy Policy</RouterLink>
+                <RouterLink to="/privacy" class="site-footer__link">{{
+                  t('footer.privacy')
+                }}</RouterLink>
               </li>
               <li>
-                <RouterLink to="/terms" class="site-footer__link">Terms of Service</RouterLink>
+                <RouterLink to="/terms" class="site-footer__link">{{
+                  t('footer.terms')
+                }}</RouterLink>
+              </li>
+              <li>
+                <a
+                  href="https://axislabs.eu/the-impostor/policy"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="site-footer__link"
+                >
+                  Axis Labs Policy ↗
+                </a>
+              </li>
+              <li>
+                <a
+                  href="https://axislabs.eu/the-impostor/terms-and-conditions"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="site-footer__link"
+                >
+                  Axis Labs Terms ↗
+                </a>
               </li>
             </ul>
           </div>
@@ -100,10 +151,11 @@ const currentYear = new Date().getFullYear()
 
       <div class="site-footer__bottom">
         <p class="site-footer__copyright">
-          © {{ currentYear }} {{ APP_NAME }}. All rights reserved.
+          © {{ currentYear }} {{ locale === 'es' ? 'El Impostor' : APP_NAME }}.
+          {{ locale === 'es' ? 'Todos los derechos reservados.' : 'All rights reserved.' }}
         </p>
         <p class="site-footer__credit">
-          Crafted by
+          {{ locale === 'es' ? 'Creado por' : 'Crafted by' }}
           <a :href="CREDITS_URL" target="_blank" rel="noopener noreferrer" class="credits-link">
             {{ CREDITS_NAME }}
           </a>
