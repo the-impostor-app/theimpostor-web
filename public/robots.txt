@@ -21,4 +21,7 @@ Allow: /
 User-agent: Bingbot
 Allow: /
 
+User-agent: anthropic-ai
+Allow: /
+
 Sitemap: https://theimpostor.app/sitemap.xml

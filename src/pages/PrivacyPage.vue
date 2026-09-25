@@ -1,16 +1,82 @@
 <script setup lang="ts">
 import { APP_NAME } from '../config'
+import { useI18n } from '../composables/useI18n'
+
+const { locale } = useI18n()
 </script>
 
 <template>
   <div class="legal-page">
     <section class="section">
       <div class="container legal-page__container">
-        <span class="chip chip--primary">Legal</span>
-        <h1 class="legal-page__title">Privacy Policy</h1>
-        <p class="legal-page__date">Last updated: September 2026</p>
+        <span class="chip chip--primary">{{ locale === 'es' ? 'Legal' : 'Legal' }}</span>
+        <h1 class="legal-page__title">
+          {{ locale === 'es' ? 'Política de Privacidad' : 'Privacy Policy' }}
+        </h1>
+        <p class="legal-page__date">
+          {{
+            locale === 'es'
+              ? 'Última actualización: Septiembre 2026'
+              : 'Last updated: September 2026'
+          }}
+        </p>
 
-        <div class="card legal-content">
+        <!-- Spanish Version -->
+        <div v-if="locale === 'es'" class="card legal-content">
+          <h2>1. Introducción</h2>
+          <p>
+            Bienvenido a {{ APP_NAME }} ("nosotros" o "nuestro"). Valoramos tu privacidad y nos
+            comprometemos a ser completamente transparentes sobre cómo se gestionan tus datos al
+            utilizar la aplicación móvil y este sitio web.
+          </p>
+
+          <h2>2. Datos en Partidas Locales (Pasa y Juega)</h2>
+          <p>
+            Al jugar en modo local Pasa y Juega, todos los datos de la partida, los paquetes de
+            palabras personalizados y los ajustes se guardan estrictamente en tu propio dispositivo.
+            No transmitimos ni almacenamos tus palabras locales, nombres de jugadores ni datos de
+            partida en servidores externos.
+          </p>
+
+          <h2>3. Sesiones Multijugador Online</h2>
+          <p>
+            Al utilizar salas multijugador online, se transmiten datos de sesión temporales (códigos
+            de sala, nombres de usuario, estado de la ronda y votos) mediante Firebase Firestore
+            para permitir la sincronización en tiempo real entre los participantes. Estos datos se
+            limpian y eliminan automáticamente al concluir las partidas.
+          </p>
+
+          <h2>4. Analítica y Publicidad</h2>
+          <p>
+            {{ APP_NAME }} puede emplear Google Mobile Ads para mostrar anuncios personalizados o no
+            personalizados (sujeto a tu consentimiento explícito según las normativas GDPR, CCPA,
+            etc.). Las redes publicitarias pueden utilizar identificadores de dispositivo para
+            mostrar publicidad relevante.
+          </p>
+
+          <h2>5. Derechos del Usuario y Control de Datos</h2>
+          <p>
+            Puedes restablecer tus estadísticas locales, paquetes de palabras personalizados y
+            preferencias de consentimiento publicitario en cualquier momento desde los ajustes de la
+            aplicación o borrando los datos de la app en tu teléfono.
+          </p>
+
+          <h2>6. Contacto y Soporte</h2>
+          <p>
+            Si tienes cualquier duda acerca de esta Política de Privacidad, puedes escribirnos a
+            través del correo de soporte disponible en la ficha de la App Store o Google Play Store,
+            o consultar la política oficial en
+            <a
+              href="https://axislabs.eu/the-impostor/policy"
+              target="_blank"
+              rel="noopener noreferrer"
+              >Axis Labs Policy</a
+            >.
+          </p>
+        </div>
+
+        <!-- English Version -->
+        <div v-else class="card legal-content">
           <h2>1. Introduction</h2>
           <p>
             Welcome to {{ APP_NAME }} ("we", "our", or "us"). We value your privacy and are
@@ -49,7 +115,14 @@ import { APP_NAME } from '../config'
           <h2>6. Contact Us</h2>
           <p>
             If you have questions about this Privacy Policy, please reach out to us through the
-            developer support email listed on the App Store or Google Play Store listing.
+            developer support email listed on the App Store or Google Play Store listing, or view
+            the official document at
+            <a
+              href="https://axislabs.eu/the-impostor/policy"
+              target="_blank"
+              rel="noopener noreferrer"
+              >Axis Labs Policy</a
+            >.
           </p>
         </div>
       </div>
@@ -93,6 +166,15 @@ import { APP_NAME } from '../config'
     font-size: var(--font-size-body-small);
     line-height: var(--line-height-body);
     color: var(--color-ink-active);
+  }
+
+  a {
+    color: var(--color-primary-dark);
+    text-decoration: underline;
+
+    &:hover {
+      color: var(--color-ink);
+    }
   }
 }
 </style>

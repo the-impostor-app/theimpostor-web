@@ -2,6 +2,10 @@
 import { ref } from 'vue'
 import { APP_NAME } from '../config'
 import appIcon from '../assets/images/icon.png'
+import LanguageSwitch from './LanguageSwitch.vue'
+import { useI18n } from '../composables/useI18n'
+
+const { t } = useI18n()
 
 const isMobileMenuOpen = ref(false)
 
@@ -22,35 +26,47 @@ function closeMenu() {
         <span class="site-header__name">{{ APP_NAME }}</span>
       </RouterLink>
 
-      <nav class="site-header__nav" :class="{ 'is-open': isMobileMenuOpen }">
-        <RouterLink to="/how-to-play" class="site-header__link" @click="closeMenu">
-          How to Play
-        </RouterLink>
-        <RouterLink to="/game-modes" class="site-header__link" @click="closeMenu">
-          Game Modes
-        </RouterLink>
-        <RouterLink to="/word-packs" class="site-header__link" @click="closeMenu">
-          Word Packs
-        </RouterLink>
-        <RouterLink
-          to="/download"
-          class="site-header__link site-header__link--cta"
-          @click="closeMenu"
-        >
-          Get the App
-        </RouterLink>
-      </nav>
+      <div class="site-header__actions-wrap">
+        <nav class="site-header__nav" :class="{ 'is-open': isMobileMenuOpen }">
+          <RouterLink to="/how-to-play" class="site-header__link" @click="closeMenu">
+            {{ t('nav.howToPlay') }}
+          </RouterLink>
+          <RouterLink to="/game-modes" class="site-header__link" @click="closeMenu">
+            {{ t('nav.gameModes') }}
+          </RouterLink>
+          <RouterLink to="/word-packs" class="site-header__link" @click="closeMenu">
+            {{ t('nav.wordPacks') }}
+          </RouterLink>
+          <RouterLink to="/blog" class="site-header__link" @click="closeMenu">
+            {{ t('nav.blog') }}
+          </RouterLink>
+          <div class="site-header__switch-mobile">
+            <LanguageSwitch />
+          </div>
+          <RouterLink
+            to="/download"
+            class="site-header__link site-header__link--cta"
+            @click="closeMenu"
+          >
+            {{ t('nav.getTheApp') }}
+          </RouterLink>
+        </nav>
 
-      <button
-        class="site-header__toggle"
-        :aria-expanded="isMobileMenuOpen"
-        aria-label="Toggle navigation menu"
-        @click="toggleMenu"
-      >
-        <span class="site-header__toggle-bar" />
-        <span class="site-header__toggle-bar" />
-        <span class="site-header__toggle-bar" />
-      </button>
+        <div class="site-header__switch-desktop">
+          <LanguageSwitch />
+        </div>
+
+        <button
+          class="site-header__toggle"
+          :aria-expanded="isMobileMenuOpen"
+          aria-label="Toggle navigation menu"
+          @click="toggleMenu"
+        >
+          <span class="site-header__toggle-bar" />
+          <span class="site-header__toggle-bar" />
+          <span class="site-header__toggle-bar" />
+        </button>
+      </div>
     </div>
   </header>
 </template>
@@ -92,6 +108,16 @@ function closeMenu() {
     font-size: var(--font-size-title);
     letter-spacing: var(--letter-spacing-tight);
     color: var(--color-ink);
+  }
+
+  &__actions-wrap {
+    display: flex;
+    align-items: center;
+    gap: var(--space-lg);
+  }
+
+  &__switch-mobile {
+    display: none;
   }
 
   &__nav {
@@ -156,6 +182,16 @@ function closeMenu() {
 
 @media (max-width: 768px) {
   .site-header {
+    &__switch-desktop {
+      display: none;
+    }
+
+    &__switch-mobile {
+      display: flex;
+      justify-content: center;
+      margin: var(--space-md) 0;
+    }
+
     &__toggle {
       display: flex;
     }

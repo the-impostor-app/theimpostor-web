@@ -1,6 +1,17 @@
 <!doctype html>
 <html lang="en">
   <head>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('consent', 'default', {
+        'ad_storage': 'denied',
+        'ad_user_data': 'denied',
+        'ad_personalization': 'denied',
+        'analytics_storage': 'denied',
+        'wait_for_update': 500
+      });
+    </script>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>The Impostor — The Ultimate Spy Party Game</title>
@@ -10,19 +21,75 @@
     />
     <meta name="theme-color" content="#FFAE00" />
 
+    <link rel="canonical" href="https://theimpostor.app/" />
+    <link rel="alternate" hreflang="en" href="https://theimpostor.app/" />
+    <link rel="alternate" hreflang="es" href="https://theimpostor.app/" />
+    <link rel="alternate" hreflang="x-default" href="https://theimpostor.app/" />
+
     <!-- Open Graph / Social -->
     <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://theimpostor.app/" />
     <meta property="og:title" content="The Impostor — The Ultimate Spy Party Game" />
     <meta
       property="og:description"
       content="The thrilling social deduction party game. Everyone gets the secret word—except the impostor. Pass and play on 1 phone or play online!"
     />
+    <meta property="og:image" content="https://theimpostor.app/og-image.png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
     <meta property="og:site_name" content="The Impostor" />
     <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:image" content="https://theimpostor.app/og-image.png" />
 
     <link rel="icon" href="/favicon.ico" />
     <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
     <link rel="manifest" href="/manifest.webmanifest" />
+
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "MobileApplication",
+        "name": "The Impostor",
+        "alternateName": "El Impostor",
+        "description": "The thrilling social deduction party game where everyone gets the secret word except the impostor. Play offline with 3-20 friends on 1 phone or online multiplayer.",
+        "applicationCategory": "GameApplication",
+        "operatingSystem": "iOS, Android",
+        "offers": {
+          "@type": "Offer",
+          "price": "0",
+          "priceCurrency": "USD"
+        },
+        "aggregateRating": {
+          "@type": "AggregateRating",
+          "ratingValue": "4.5",
+          "ratingCount": "100"
+        },
+        "url": "https://theimpostor.app/",
+        "downloadUrl": [
+          "https://apps.apple.com/us/app/the-impostor-spy-party-game/id6763661603",
+          "https://play.google.com/store/apps/details?id=com.drodriguez.imposter"
+        ],
+        "inLanguage": ["en", "es", "fr", "de", "it", "pt"]
+      }
+    </script>
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "Organization",
+        "name": "Axis Labs",
+        "url": "https://axislabs.eu/",
+        "logo": "https://theimpostor.app/icon-512.png"
+      }
+    </script>
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "WebSite",
+        "name": "The Impostor",
+        "alternateName": "El Impostor",
+        "url": "https://theimpostor.app/"
+      }
+    </script>
   </head>
   <body>
     <div id="app"></div>
