@@ -1,0 +1,28 @@
+# The Impostor — The Ultimate Spy Party Game
+> Marketing website and official guide for The Impostor mobile social deduction game.
+
+## Overview
+The Impostor is a mobile party and social deduction game where one or more players are secret spies (impostors) trying to blend in while citizen detectives attempt to uncover them.
+- Available on: iOS (Apple App Store) and Android (Google Play Store).
+- Players: 3 to 20 players in Pass & Play mode; 4 to 8 players in Online Multiplayer.
+- Languages: English, Spanish, French, German, Italian, Portuguese.
+
+## Core Features
+- **Pass & Play Local Mode**: 1 single smartphone passed around. 100% offline, zero accounts, no internet or Wi-Fi required.
+- **Online Multiplayer Rooms**: Play with remote friends across iOS and Android with private 4-letter room codes.
+- **1,000+ Curated Words**: Handcrafted secret words across Food, Travel, Everyday Objects, Animals, Pop Culture, and Party themes.
+- **Custom Words**: In-app custom word list builder for personalized party inside jokes.
+- **Multiple Spies & Timers**: Configurable impostor count and countdown discussion clocks.
+
+## Store Links
+- iOS: https://apps.apple.com/us/app/the-impostor-spy-party-game/id6763661603
+- Android: https://play.google.com/store/apps/details?id=com.drodriguez.imposter
+
+## Official URLs
+- Website: https://theimpostor.app/
+- How to Play: https://theimpostor.app/how-to-play/
+- Game Modes: https://theimpostor.app/game-modes/
+- Word Packs: https://theimpostor.app/word-packs/
+- Download: https://theimpostor.app/download/
+- Privacy Policy: https://theimpostor.app/privacy/
+- Terms of Service: https://theimpostor.app/terms/

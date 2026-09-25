@@ -1,0 +1,17 @@
+{
+  "name": "The Impostor — The Ultimate Spy Party Game",
+  "short_name": "The Impostor",
+  "description": "Unmask the impostor among your friends! Pass & play on 1 phone or play online multiplayer.",
+  "start_url": "./",
+  "display": "standalone",
+  "background_color": "#FAF8F5",
+  "theme_color": "#FFAE00",
+  "icons": [
+    {
+      "src": "/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any"
+    }
+  ]
+}
